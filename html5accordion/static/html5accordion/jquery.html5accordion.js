@@ -41,6 +41,7 @@
             }
 
             // Hide content unless the `open` or `data-open` attribute is truthy
+            // Currently <details open="open"> does not work with jQuery 1.6.1 in Firefox 5
             if ($details.prop('open') || $details.data('open')) {
                 $details.addClass('open');
                 $detailsNotSummary.slideDown('fast');
