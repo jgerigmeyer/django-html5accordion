@@ -17,6 +17,11 @@ setup(
     packages=[
         "html5accordion"
     ],
+    package_data={
+        "html5accordion": [
+            "static/html5accordion/*.js"
+        ]
+    },
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Web Environment",

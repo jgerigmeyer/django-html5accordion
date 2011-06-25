@@ -1,0 +1,2 @@
+recursive-include html5accordion/static *.js
+include README.rst
