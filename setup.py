@@ -9,7 +9,7 @@ long_description = open(join(here, "README.rst")).read()
 setup(
     name="django-html5accordion",
     version="0.1.1",
-    description="A Django packaging of jquery-html5accordion.js",
+    description="JS support to expand/collapse content, like HTML5 details/summary elements",
     long_description=long_description,
     author="Jonny Gerig Meyer",
     author_email="jonny@oddbird.net",
