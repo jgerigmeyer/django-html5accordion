@@ -6,7 +6,12 @@ django-html5accordion adds JS support to expand/collapse any content, like HTML5
 Dependencies
 ------------
 
-- jQuery library
+- jQuery library (http://jquery.com/)
+
+Installation
+------------
+
+In your Django project settings, add "html5accordion" to your INSTALLED_APPS.
 
 Usage
 -----
