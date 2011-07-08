@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>jQuery html5accordion Test Page</title>
+	<meta name="author" content="Jonny Gerig Meyer">
+</head>
+<body>
+
+  <details id="details1">
+    <summary>- show details</summary>
+    <p>-- these are the details</p>
+  </details><br>
+
+  <details id="details2" class="open">
+    <summary>- show details</summary>
+    <p>-- this should start open (class=open)</p>
+  </details><br>
+
+  <details id="details3" open>
+    <summary>- show details</summary>
+    <p>-- this should start open (attr open)</p>
+  </details><br>
+
+  <div id="details4" class="details">
+    <div class="summary">- show details</div>
+    <p>-- these are the details</p>
+  </div>
+
+  <div id="details5" class="details open">
+    <div class="summary">- show details</div>
+    <p>-- this should start open (class=open)</p>
+  </div>
+
+  <div id="details6" class="details" open>
+    <div class="summary">- show details</div>
+    <p>-- this should start open (attr open)</p>
+  </div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script type="text/javascript" src="../html5accordion/static/html5accordion/jquery.html5accordion.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('.details:not(html)').html5accordion();
+      $('details').html5accordion({
+        summarySelector: 'summary'
+      });
+    });
+  </script>
+</body>
+</html>
