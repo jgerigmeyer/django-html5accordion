@@ -1,5 +1,5 @@
 /**
- * jQuery html5accordion 0.1.5
+ * jQuery html5accordion 0.1.6
  *
  * Copyright (c) 2011, Jonny Gerig Meyer
  * All rights reserved.
@@ -63,7 +63,7 @@
 
             // Set the `tabindex` attribute of the `summary` element to 0 to make it keyboard accessible
             detailsSummary.attr('tabindex', 0).click(function (event) {
-                if ($(event.target).is(options.ignoredElements)) {
+                if ($(event.target).is(options.ignoredElements) && $(event.target).parents(options.summarySelector).length) {
                     // prevent clicks on summary-internal buttons or links from triggering accordion
                     return;
                 }

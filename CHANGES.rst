@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+0.1.6 (2011.11.17)
+------------------
+
+* Clicking ignoredElements does not trigger expand/collapse only if they are within summarySelector element.
+
 0.1.5 (2011.07.14)
 ------------------
 
