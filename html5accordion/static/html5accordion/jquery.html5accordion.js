@@ -1,14 +1,14 @@
 /**
- * jQuery html5accordion 0.1.6
- *
- * Copyright (c) 2011, Jonny Gerig Meyer
- * All rights reserved.
- *
- * Licensed under the New BSD License
- * See: http://www.opensource.org/licenses/bsd-license.php
+ * jQuery html5accordion 0.1.7
  *
  * Based on code by Mathias Bynens
  * See: http://mathiasbynens.be/notes/html5-details-jquery
+ *
+ * original portions copyright (c) 2010, Mathias Bynens
+ * modifications copyright (c) 2012, Jonny Gerig Meyer
+ *
+ * Licensed under the New BSD License
+ * See: http://www.opensource.org/licenses/bsd-license.php
  */
 
 /*jslint    browser:    true,
@@ -56,7 +56,7 @@
             // attribute is set, but this is buggy in Firefox 5.0.]
             if (details.prop('open') || details.hasClass(options.expandedClass)) {
                 details.addClass(options.expandedClass).prop('open', true);
-                detailsNotSummary.slideDown(options.slideSpeed);
+                detailsNotSummary.slideDown(options.initialSlideSpeed != null ? options.initialSlideSpeed : options.slideSpeed);
             } else {
                 detailsNotSummary.hide();
             }
@@ -67,13 +67,23 @@
                     // prevent clicks on summary-internal buttons or links from triggering accordion
                     return;
                 }
-                // Focus on the `summary` element
-                detailsSummary.focus();
+                event.preventDefault();
+                $(this).blur();
                 // Toggle the `open` property of the `details` element
                 if (details.prop('open')) { details.prop('open', false); } else { details.prop('open', true); }
                 // Toggle the additional information in the `details` element
-                detailsNotSummary.slideToggle(options.slideSpeed);
                 details.toggleClass(options.expandedClass);
+                detailsNotSummary.slideToggle(options.slideSpeed, function () {
+                    if (details.hasClass(options.expandedClass)) {
+                        if (options.openCallback) {
+                            options.openCallback($(this));
+                        }
+                    } else {
+                        if (options.closeCallback) {
+                            options.closeCallback($(this));
+                        }
+                    }
+                });
             }).keyup(function (event) {
                 if (13 === event.keyCode || 32 === event.keyCode) {
                     // Enter or Space is pressed - trigger the `click` event on the `summary` element
@@ -92,6 +102,9 @@
         summarySelector: '.summary',                // Selector for summary text
         slideSpeed: 200,                            // Slide animation speed (ms)
         expandedClass: 'open',                      // Class to be added when details are visible (expanded)
-        ignoredElements: 'button, a, input, label'  // Elements within `summary` that will *not* trigger expand/collapse
+        ignoredElements: 'button, a, input, label', // Elements within `summary` that will *not* trigger expand/collapse
+        initialSlideSpeed: null,                    // Slide animation speed (ms) for already-expanded details
+        openCallback: null,                         // Callback fn after open animation
+        closeCallback: null                         // Callback fn after close animation
     };
 }(jQuery));

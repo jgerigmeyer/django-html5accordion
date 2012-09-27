@@ -6,8 +6,8 @@ HTML5 details/summary elements. It can be called on any element, and accepts
 options to set the selector for the ``summary`` contents that should always
 remain visible (and act as the link to expand/collapse the hidden content),
 the speed of the slideUp/Down animation, the class to be added when the
-``details`` element is expanded, and selectors for elements within ``summary``
-that should not trigger the expand/collapse.
+``details`` element is expanded, selectors for elements within ``summary``
+that should not trigger the expand/collapse, and callback fns.
 
 Dependencies
 ------------
@@ -53,10 +53,14 @@ default values::
       slideSpeed: 200,                            // Slide animation speed (ms)
       expandedClass: 'open',                      // Class added when details are
                                                     // expanded
-      ignoredElements: 'button, a, input, label'  // Elements within `summary` that
+      ignoredElements: 'button, a, input, label', // Elements within `summary` that
                                                     // will not trigger expand/collapse
+      initialSlideSpeed: null,                    // Slide animation speed (ms) for
+                                                    // already-expanded details
+      openCallback: null,                         // Callback fn after open animation
+      closeCallback: null                         // Callback fn after close animation
     });
 
 Note: To expand a ``details`` element on initial load, simply add class
 ``open`` (or whatever class is passed as option ``expandedClass``), or add
-attribute ``open`` (this second method does not work in Firefox 5.0).
+attribute ``open``.
