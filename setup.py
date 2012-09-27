@@ -8,7 +8,7 @@ long_description = open(join(here, "README.rst")).read()
 
 setup(
     name="django-html5accordion",
-    version="0.1.6",
+    version="0.1.7",
     description="JS support to expand/collapse content, like HTML5 details/summary elements",
     long_description=long_description,
     author="Jonny Gerig Meyer",
