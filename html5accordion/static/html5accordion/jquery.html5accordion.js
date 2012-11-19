@@ -1,5 +1,5 @@
 /**
- * jQuery html5accordion 0.1.7
+ * jQuery html5accordion 0.1.8
  *
  * Based on code by Mathias Bynens
  * See: http://mathiasbynens.be/notes/html5-details-jquery
@@ -56,7 +56,11 @@
             // attribute is set, but this is buggy in Firefox 5.0.]
             if (details.prop('open') || details.hasClass(options.expandedClass)) {
                 details.addClass(options.expandedClass).prop('open', true);
-                detailsNotSummary.slideDown(options.initialSlideSpeed != null ? options.initialSlideSpeed : options.slideSpeed);
+                detailsNotSummary.slideDown(options.initialSlideSpeed != null ? options.initialSlideSpeed : options.slideSpeed, function () {
+                    if (options.openCallback) {
+                        options.openCallback($(this));
+                    }
+                });
             } else {
                 detailsNotSummary.hide();
             }

@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+0.1.8 (2012.11.19)
+------------------
+
+* Run openCallback fn on initial open elements.
+
 0.1.7 (2012.09.27)
 ------------------
 
